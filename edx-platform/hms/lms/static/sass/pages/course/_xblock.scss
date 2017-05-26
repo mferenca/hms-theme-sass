@@ -1,0 +1,365 @@
+.xblock {
+  .solution-span {
+    span {
+      margin: 0;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+  }
+
+  &.xmodule_VerticalModule {
+    .vert-mod {
+      .vert {
+        position: relative;
+        margin: 0 0 2em 0;
+        border: 0 none;
+        border-bottom: 2px solid $color-border;
+        padding: 0 0 2em 0;
+
+        &:after {
+          display: block;
+          position: absolute;
+          bottom: -0.8em;
+          left: 50%;
+          margin: 2em 0 0 0;
+          background: $white;
+          text-align: center;
+          color: $color-border;
+          font-family: 'FontAwesome', sans-serif;
+          content: '\f103';
+        }
+
+        &:last-child {
+          border: 0 none;
+          padding: 0;
+
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  &.xmodule_VideoModule {
+    .video {
+      background: $white none;
+
+      .video-player {
+        @include size(auto, auto);
+
+        position: relative;
+        padding: 0 0 56.25% 0;
+        min-height: 0;
+
+        iframe {
+          @include size(100%, 100%); // !important
+
+          position: absolute;
+          top: 0 !important;
+          left: 0;
+        }
+      }
+    }
+
+    * {
+      box-sizing: content-box;
+    }
+  }
+
+  &.xmodule_DiscussionModule {
+    .discussion-module {
+      border: 1px solid $color-border;
+      border-radius: $default-border-radius;
+
+      .discussion {
+        .new-post-article {
+          margin: 0;
+
+          > .inner-wrapper {
+            @include size(auto, auto);
+
+            min-width: 0;
+            max-width: none;
+
+            .new-post-form-errors {
+              li {
+                @extend %hms-alert-error;
+              }
+            }
+
+            > .new-post-form {
+              @include size(auto, auto);
+
+              margin: 0;
+              border: 1px solid $color-border;
+              border-radius: $default-border-radius;
+              box-shadow: none;
+              background: transparentize($black, 0.2) none;
+              padding: 30px;
+              color: $white;
+
+              input[type=text],
+              input[type=email],
+              input[type=password],
+              textarea {
+                @include hms-input;
+
+                color: $black;
+              }
+
+              .wmd-panel {
+                @include size(auto, auto);
+
+                min-width: 0;
+
+                textarea {
+                  border-bottom-left-radius: 0;
+                  border-bottom-right-radius: 0;
+                }
+
+                .wmd-preview-container {
+                  @include size(auto, auto);
+
+                  border: 0 none;
+                  box-shadow: none;
+                }
+              }
+
+              input[type=submit] {
+                @include hms-btn($white, $color-success);
+
+                font-size: 0.9em;
+              }
+
+              .new-post-cancel {
+                @include hms-btn($black, $color-background);
+
+                margin-left: 1em;
+                font-size: 0.9em;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .new-post-btn {
+      @include hms-btn($white, $color-secondary);
+
+      font-size: 0.9em;
+
+      span.icon {
+        @include size(auto, auto);
+
+        display: inline;
+        float: none;
+        margin: 0;
+        padding: 0 0.5em 0 0;
+        color: inherit;
+        font: inherit;
+        font-family: 'FontAwesome', sans-serif;
+      }
+    }
+  }
+
+  &.xmodule_CapaModule {
+    .problem {
+      legend {
+        border-style: none !important;
+        font-size: $font-size-base;
+        line-height: 1.65;
+
+      }
+
+      .unanswered, .unsubmitted {
+        span.status {
+          display: none !important;
+        }
+      }
+
+      span {
+        .unanswered {
+          input[type="text"] {
+            margin-left: 39px;
+          }
+        }
+
+        .status.unanswered{
+          display: none !important;
+        }
+
+        .incorrect {
+          top: -10px;
+
+          input[type="text"] {
+            margin-left: 39px;
+          }
+        }
+
+        .correct {
+          top: -10px;
+
+          input[type="text"] {
+            margin-left: 39px;
+          }
+        }
+      }
+
+      .choicegroup {
+        label {
+          margin:0 5px 0 -20px;
+          border-left: 1px solid $color-border;
+          border-top: none;
+          border-right: none;
+          border-bottom: none;
+          padding-left: 15px;
+          line-height: 1;
+
+          input[type="radio"] {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-top: 5px;
+            margin-right: 15px;
+          }
+
+          input[type="checkbox"] {
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-top: 5px;
+          }
+        }
+
+        fieldset {
+          margin: 0 0 20px 60px;
+          border: 0;
+        }
+      }
+
+      form {
+        legend {
+          display: block;
+          margin-bottom: 10px;
+          margin-left: -60px;
+          border: 0;
+          padding: 10px 0 15px;
+          width: 100%;
+          color: #3c3c3c !important;
+          font-family: $avenir-book;
+          font-size: $font-size-base;
+          line-height: 1.65;
+        }
+
+        span {
+          .status.unanswered{
+            display: none !important;
+          }
+        }
+
+        span.unanswered {
+          display: none !important;
+        }
+
+        .indicator_container {
+          span {
+            .status.unanswered {
+                display: none !important;
+            }
+          }
+        }
+
+        p.inline-text {
+          display: inline;
+
+          + span {
+            display: inline;
+            margin-right: -10px;
+            margin-left: 5px;
+
+            > form {
+              display: inline;
+
+              select {
+                margin-right: 5px;
+              }
+
+              span.status,
+              span.unanswered {
+                display: none !important;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    button, input[type=button] {
+      @include hms-btn($white, $color-secondary);
+
+      display: inline;
+      border-color: $mortar;
+      border-radius: 0 !important;
+      background-color: $mortar;
+      font-family: $avenir-book;
+      font-size: $font-size-h3;
+      font-weight: bold;
+
+      span {
+        color: inherit;
+        font: inherit;
+      }
+    }
+
+    button:focus {
+      border-color: $crimson;
+      background-color: $crimson;
+      color: $white;
+    }
+
+    button:hover {
+      border-color: $crimson;
+      background-color: $crimson;
+      color: $white;
+    }
+
+    .submission_feedback {
+      color: $color-disabled;
+      font: inherit;
+    }
+
+    .action {
+      margin-left: 39px;
+
+      .show {
+        // Ugly hack because ugly !important.
+        display: inline !important;
+      }
+
+      .save {
+        display: none;
+      }
+    }
+  }
+
+  .taggedtext {
+    button, input[type=button] {
+      @include hms-btn($white, $color-secondary);
+
+      display: inline;
+      font-size: 0.9em;
+
+      span {
+        color: inherit;
+        font: inherit;
+      }
+    }
+
+    .submission_feedback {
+      color: $color-disabled;
+      font: inherit;
+    }
+  }
+}

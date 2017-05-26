@@ -1,0 +1,65 @@
+// override lms/static/sass/elements/_controls.scss
+
+// teal primary button
+%btn-primary-teal {
+  @extend %btn-primary;
+  box-shadow: 0 2px 1px 0 $m-teal-d4;
+  background: $m-teal;
+  padding: 9px 0 5px 0;
+  line-height: $line-height-base;
+  color: $white;
+  font-size: $font-size-base;
+
+  &:hover, &:active, &:focus {
+    background: $m-teal-d1;
+    color: $white;
+  }
+
+  &.current, &.active {
+    box-shadow: inset 0 2px 1px 1px $m-teal-d2;
+    background: $m-teal;
+    color: $m-teal-d2;
+
+    &:hover, &:active, &:focus {
+      box-shadow: inset 0 2px 1px 1px $m-teal-d3;
+      color: $m-teal-d3;
+    }
+  }
+
+  &.disabled, &[disabled] {
+    box-shadow: none;
+  }
+}
+
+// teal secondary button outline style
+%btn-secondary-teal-outline {
+  @extend %t-action2;
+  @extend %btn;
+  @extend %btn-edged;
+  box-shadow: none;
+  border: 1px solid $m-teal-d3;
+  padding: 9px $baseline;
+  background: transparent;
+  color: $m-teal-d3;
+
+  &:hover, &:active, &:focus {
+    box-shadow: 0 2px 1px 0 $m-teal-d4;
+    background: $m-teal-d1;
+    color: $white;
+  }
+
+  &.current, &.active {
+    box-shadow: inset 0 2px 1px 1px $m-teal-d2;
+    background: $m-blue;
+    color: $m-teal-d2;
+
+    &:hover, &:active, &:focus {
+      box-shadow: inset 0 2px 1px 1px $m-teal-d3;
+      color: $m-teal-d3;
+    }
+  }
+
+  &.disabled, &[disabled] {
+    box-shadow: none;
+  }
+}

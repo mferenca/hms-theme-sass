@@ -1,0 +1,5 @@
+# Bower components
+edx-platform/hms/lms/bower_components
+
+# Static files
+*.css

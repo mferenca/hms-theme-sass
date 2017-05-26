@@ -1,0 +1,19 @@
+@mixin hms-container {
+  @include size(auto, auto);
+
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 15px;
+  min-width: 0;
+  max-width: none;
+
+  @media (min-width: $screen-md-min) {
+    width: 970px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+
+  @include clearfix;
+}

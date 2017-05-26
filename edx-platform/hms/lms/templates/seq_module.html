@@ -1,0 +1,164 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+
+<div id="sequence_${element_id}" class="sequence" data-id="${item_id}" data-position="${position}" data-ajax-url="${ajax_url}" data-next-url="${next_url}" data-prev-url="${prev_url}">
+  <!-- <div class="path"></div> -->
+  <div aria-label="${_('Section Navigation')}" class="sequence-nav">
+    <button id="top-prev" class="sequence-nav-button button-previous"><span class="icon fa fa-chevron-left" aria-hidden="true"></span><span class="sr">${_('Previous')}</span></button>
+    <nav class="sequence-list-wrapper" aria-label="${_('Unit')}">
+      <ol id="sequence-list">
+        % for idx, item in enumerate(items):
+        ## TODO (vshnayder): add item.progress_detail either to the title or somewhere else.
+        ## Make sure it gets updated after ajax calls.
+        ## implementation note: will need to figure out how to handle combining detail
+        ## statuses of multiple modules in js.
+        
+        <%
+            icon = item['icon']
+            iconClass = 'null'
+        %>
+
+        % if icon==0:
+          <% iconClass = item['type'] %>
+        % endif
+        % if icon==1:
+          <% iconClass = 'text' %>
+        % endif
+        % if icon==2:
+          <% iconClass = 'video' %>
+        % endif
+        % if icon==3:
+          <% iconClass = 'interactive' %>
+        % endif
+        % if icon==4:
+          <% iconClass = 'downloadable' %>
+        % endif
+        % if icon==5:
+          <% iconClass = 'ask-question' %>
+        % endif
+        % if icon==6:
+          <% iconClass = 'asses-question' %>
+        % endif
+        % if icon==7:
+          <% iconClass = 'text-box' %>
+        % endif
+
+        <li>
+        <button class="seq_${iconClass} inactive progress-${item['progress_status']} nav-item ${'visited' if item['visited'] else ''}"
+           data-id="${item['id']}"
+           data-element="${idx+1}"
+           data-page-title="${item['page_title']|h}"
+           data-path="${item['path']|h}"
+           aria-controls="seq_contents_${idx}"
+           id="tab_${idx}"
+           tabindex="0">
+            <span class="icon fa seq_${iconClass}" aria-hidden="true"></span>
+            <!-- <i class="fa fa-fw fa-bookmark bookmark-icon ${"is-hidden" if not item['bookmarked'] else "bookmarked"}" aria-hidden="true"></i> -->
+            <div class="sequence-tooltip sr"><span class="sr">${item['type']}&nbsp;</span>${item['page_title']}<span class="sr bookmark-icon-sr">&nbsp;${_("Bookmarked") if item['bookmarked'] else ""}</span></div>
+          </button>
+        </li>
+        % endfor
+      </ol>
+    </nav>
+    <span class="pagination-xb" style="padding:28px;"></span>
+    <button class="sequence-nav-button button-next"><span class="icon fa fa-chevron-right" aria-hidden="true"></span><span class="sr">${_('Next')}</span></button>
+  </div>
+
+  <div class="sr-is-focusable" tabindex="-1"></div>
+
+  % for idx, item in enumerate(items):
+  <div id="seq_contents_${idx+1}"
+    aria-labelledby="tab_${idx}"
+    aria-hidden="true"
+    class="seq_contents tex2jax_ignore asciimath2jax_ignore">
+    ${item['content'] | h}
+  </div>
+  % endfor
+  <div id="seq_content" class="temp"></div>
+
+  <nav class="sequence-bottom" aria-label="${_('Section')}">
+    <button class="sequence-nav-button button-previous">
+        <span class="sr">${_('Previous')}</span>
+    </button>
+     <span class="pagination-xb" style="padding:0;"></span>
+    <button class="sequence-nav-button button-next">
+        <span class="sr">${_('Next')}</span>
+    </button>
+  </nav>
+  <!-- <nav class="sequence-bottom" aria-label="${_('Section')}">
+    <button class="sequence-nav-button button-previous ${'disabled' if not prev_url else ''}">
+      <span class="sr">${prev_url}</span>
+      <div class="section-previous-square"></div>
+      <div id="button-prev-overlay" onclick="location.href='${prev_url}';"></div>
+    </button>
+    <button class="sequence-nav-button button-previous">
+      <span class="sr">${_('Previous')}</span>
+    </button>
+    <span class="pagination-xb" style="padding:0;"></span>
+    <button class="sequence-nav-button button-next ${'disabled' if not next_url else ''}">
+      <span class="sr">${next_url}</span>
+      <div class="section-next-square"></div>
+      <div id="button-next-overlay" onclick="location.href='${next_url}';"></div>
+    </button>
+    <button class="sequence-nav-button button-next">
+      <span class="sr">${_('Next')}</span>
+    </button>
+  </nav> -->
+</div>
+
+<script type="text/javascript">
+
+  var sequenceNav;
+  $(document).ready(function() {
+    sequenceNav = new SequenceNav($('.sequence-nav'));
+    $("#sequence-list li").each(function(index) {
+       if($(this).children('button:first').hasClass('progress-done')) {
+        $(this).addClass('completed');
+        $("#sequence-list li:nth-child(-n+" + index + ")").addClass('completed-prior');
+       }
+    });
+    $("#sequence-list li").on('click', function() {
+      var clicked = $(this);
+      $("#sequence-list li").each(function(index) {
+        if($(this).children('button:first').hasClass('progress-done')) {
+          $(this).addClass('completed');
+          $("#sequence-list li:nth-child(-n+" + index + ")").removeClass('completed');
+          $("#sequence-list li:nth-child(-n+" + index + ")").addClass('completed-prior');
+        }
+        if ($(this).children('button').hasClass('active')) {
+          $(this).children('button').addClass('visited');
+          $(this).children('button').removeClass('active');
+        }
+      });
+      clicked.children('button').addClass('active');
+      clicked.children('button').removeClass('visited');
+
+    });
+    var max = $('#sequence-list li').last().children('button:first').data('element');
+    var current = '';
+    var dat = '';
+    $('.button-next').prepend('<div class="section-next-square" style="display: none;"></div>');
+    $('.button-previous').append('<div class="section-previous-square" style="display: none;"></div>');
+
+    setInterval(function() {
+      $("#sequence-list li").each(function() {
+        var dat = $("#sequence-list li button.active").data('element');
+        if(dat!=undefined) {
+          current = dat;
+          $('.pagination-xb').html('<span class="current-section-unit">' + current + '</span>' + '/' + 
+                                    '<span class="max-section-unit">' + max + '</span>');
+        }
+      });
+      $('.section-previous-square, .section-next-square').hide();
+      if(max == 1){
+        $('.section-previous-square').show();
+        $('.section-next-square').show();
+      }else if (current == max) {
+        $('.section-next-square').show();
+      } else if (current == 1) {            
+        $('.section-previous-square').show();
+      } 
+    },1000); 
+    
+  });
+</script>

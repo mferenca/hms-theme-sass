@@ -1,0 +1,33 @@
+// override lms/static/sass/views/_verification.scss
+
+.verification-process {
+  .wrapper-report {
+    .report {
+      tfoot {
+        background: $m-teal;
+      }
+    }
+  }
+
+  .nav-wizard {
+    padding: 0;
+    background: none;
+
+    &.is-ready {
+      padding: 0;
+      box-shadow: none;
+      background: none;
+    }
+  }
+
+  .content-main {
+    > .title {
+      margin: 30px -10px 0 -10px;
+      border-bottom: 2px solid #bdb6b2;
+      color: $crimson;
+      font-family: $avenir-book;
+      font-size: 30px;
+      font-weight: normal;
+    }
+  }
+}

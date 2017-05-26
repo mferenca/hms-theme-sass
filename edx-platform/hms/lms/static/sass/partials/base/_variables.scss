@@ -1,0 +1,88 @@
+@import 'lms/static/sass/partials/base/_variables.scss';
+
+// Colors
+$white:             #fff;
+$black:             lighten(#000, 3%);
+
+$color-primary:     #c41731;
+$color-secondary:   #1e9ed7;
+$color-background:  darken(#fff, 3%);
+
+$color-error:       #c0392b;
+$color-success:     #2ecc71;
+$color-warning:     #f39c12;
+
+$color-disabled:    #bdc3c7;
+$color-border:      #ddd;
+
+$m-teal:            #00a69c;
+$m-teal-d1:         #17bea6;
+$m-teal-d2:         $m-teal;
+$m-teal-d3:         #129c7d;
+$m-teal-d4:         #0a734b;
+
+$register-now-color:        #646464;
+$register-now-color-hover:  #1d9d99;
+
+// HMS Colors
+$crimson:         #a51c30;
+$ink:             #1e1e1e;
+$mortar:          #8c8179;
+$unit-unfinished: #c6c0bc;
+
+// Misc
+$hr-border: $color-border;
+$default-border-radius: 4px;
+
+// Footer
+$footer-text-color: #7d7d7d;
+
+// Course Navigation
+$color-nav-main:              $crimson;
+$color-nav-hamburger:         #c45f6f;
+$color-nav-hamburger-active:  #e4e4e4;
+$color-nav-hamburger-line:    #ecd6d8;
+
+// Accordion Navigation
+$color-accordion-nav-main:            #8c8279;
+$color-accordion-nav-hamburger:       #afa8a2;
+$color-accordion-nav-hamburger-line:  $color-nav-hamburger-line;
+$color-accordion-nav-normal:          #aaa19c;
+
+// Header Logo
+$logo-img-path:       '../images/logo_primary.png';
+$logo-img-width:      370px;
+$logo-img-height:     85px;
+$logo-sm-img-width:   200px;
+$logo-sm-img-height:  46px;
+
+// Fonts
+$font-family-sans-serif:  'AvenirLTStd-Book', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$avenir-book:             AvenirLTStd-Book, sans-serif;
+
+$font-size-base:        16px;
+$line-height-base:      26/16;  // 1.625
+$line-height-computed:  floor(($font-size-base * $line-height-base));
+
+$font-size-h1: 32px;
+$font-size-h2: 20px;
+$font-size-h3: 18px;
+$font-size-h4: 18px;
+
+$headings-line-height: 1.3em;
+$headings-font-weight: 600;
+
+// Layout
+$layout-spacing:        40px;
+$layout-header-height:  78px;
+$layout-footer-height:  104px;
+
+// Screen size
+$screen-sm:     1080px;
+
+$screen-xs-min: 480px;
+$screen-sm-min: $screen-sm;
+$screen-md-min: 992px;
+
+$screen-xs-max: $screen-sm - 1;
+$screen-sm-max: 991px;

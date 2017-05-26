@@ -1,0 +1,72 @@
+@mixin hms-btn-hover($fg-color, $bg-color) {
+  border-color: $bg-color;
+  box-shadow: none;
+  background: none $fg-color;
+  color: $bg-color;
+
+  @if $bg-color == $white or $bg-color == $black {
+    border-color: $fg-color;
+  }
+}
+
+@mixin hms-btn($fg-color, $bg-color) {
+  @include size(auto, auto);
+
+  background: none;
+  font: inherit;
+
+  @include button-variant($fg-color, $bg-color, $fg-color);
+
+  transition: all .1s ease-in;
+  margin: 0;
+  border-radius: $default-border-radius;
+  outline: none;
+  box-shadow: none;
+  padding: 0.5em 1.2em;
+  overflow: hidden;
+  text-shadow: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:focus {
+    border-color: $fg-color;
+    background-color: $bg-color;
+    color: $fg-color;
+  }
+
+  @if $fg-color == $white or $fg-color == $black {
+    border-color: $bg-color;
+  }
+
+  &:hover {
+    @include hms-btn-hover($fg-color, $bg-color);
+  }
+
+  &:focus, &:active {
+    @include hms-btn-hover($fg-color, $bg-color);
+
+    outline: none;
+    border-color: $bg-color;
+  }
+
+  &.disabled, &:disabled {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    box-shadow: none;
+
+    &:hover {
+      background-color: $bg-color;
+      border-color: $fg-color;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    white-space: normal;
+  }
+}
+
+@mixin hms-btn-disabled($fg-color: $color-disabled) {
+  @include hms-btn($fg-color, $white);
+
+  cursor: default;
+}

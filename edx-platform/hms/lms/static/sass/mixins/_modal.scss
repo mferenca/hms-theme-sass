@@ -1,0 +1,132 @@
+@mixin hms-modal {
+  @extend .modal;
+
+  bottom: auto;
+  margin: 0 auto;
+  border: 0 none;
+  box-shadow: none;
+  background: none;
+  padding: 0;
+  width: 500px;
+  overflow: visible;
+  color: inherit;
+  font: inherit;
+
+  // Ugly things go here:
+
+  position: absolute !important;
+  top: 1.5 * $layout-header-height !important;
+  left: 0 !important;
+
+  .inner-wrapper {
+    border: 1px solid transparentize($black, 0.2);
+    border-radius: $default-border-radius;
+    background: none $color-background;
+    padding: 40px;
+    overflow: visible;
+
+    .close-modal {
+      top: 0;
+      right: 8px;
+      outline: none;
+      box-shadow: none;
+      padding: 0;
+      text-shadow: none;
+      color: transparentize($black, 0.2);
+      font: inherit;
+
+      &:hover, &:active, &:focus {
+        background: none;
+        color: $black;
+      }
+    }
+
+    header {
+      margin: 0 0 2em 0;
+      padding: 0;
+      text-align: center;
+
+      &:before {
+        background: none;
+      }
+
+      h2 {
+        margin: 30px 0 0 0;
+      }
+
+      hr {
+        display: none;
+      }
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+
+      .input-group {
+        @include size(auto);
+
+        display: block;
+        margin: 0 0 1em 0;
+        border: 0 none;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      label {
+        -webkit-font-smoothing: inherit;
+        color: inherit;
+        font: inherit;
+      }
+
+      input, textarea {
+        outline: none;
+        border: 1px solid $color-border;
+        border-radius: $default-border-radius;
+        font: inherit;
+      }
+
+      input[type=text],
+      input[type=email],
+      input[type=password] {
+        @include hms-input;
+      }
+
+      textarea {
+        @include hms-input;
+        @include size(100%, auto);
+      }
+
+      .submit,
+      .form-actions {
+        margin: 2em 0 0 0;
+        padding: 0;
+
+        input[type=submit] {
+          @include hms-btn($white, $color-secondary);
+        }
+      }
+    }
+  }
+}
+
+@mixin hms-container-modal {
+  @include hms-container;
+}
+
+@mixin hms-video-modal {
+  .inner-wrapper {
+    @include size(auto);
+
+    position: relative;
+    padding: 0 0 56.25% 0;
+
+    iframe {
+      @include size(100%);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

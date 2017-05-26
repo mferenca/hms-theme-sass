@@ -1,0 +1,28 @@
+> .outside-app {
+  @include hms-container;
+
+  margin-top: $layout-spacing;
+
+  h1 {
+    margin-top: 0;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: 30px;
+    text-align: left;
+    text-transform: none;
+    color: inherit;
+    font: inherit;
+    font-size: $font-size-h1;
+
+    &:before {
+      margin-right: 15px;
+      font-family: 'FontAwesome', sans-serif;
+      content: '\f071';
+    }
+  }
+
+  p {
+    max-width: none;
+    font: inherit;
+    color: inherit;
+  }
+}

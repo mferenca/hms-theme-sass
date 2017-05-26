@@ -1,0 +1,76 @@
+// override lms/static/sass/views/account-settings.scss
+
+// Username Container - Account Settings
+
+.account-settings-username-container {
+  @include hms-container;
+
+  .dashboard-content-wrapper {
+    margin-top: -18px;
+    width: 100% !important;
+
+    .dashboard-content {
+      .info--username .data {
+        position: relative;
+        z-index: 10;
+      }
+    }
+  }
+}
+
+.wrapper-account-settings .wrapper-header {
+  border-bottom: none;
+  height: inherit;
+
+  .header-title {
+    margin-left: 15px;
+    padding-top: 0;
+    text-transform: uppercase;
+    color: $mortar;
+    font-family: $avenir-book;
+    font-size: 25px;
+  }
+
+  .account-nav {
+    button {
+      &:hover, &:focus, &.active {
+          border-bottom: none !important;
+      }
+    }
+  }
+}
+
+.account-settings-sections {
+  .section-header {
+    padding-top: 0;
+    font-family: $avenir-book;
+  }
+
+  .section .account-settings-section-body .u-field {
+    .field {
+      .u-field-title {
+        margin-bottom: 6px;
+        font-size: 10px;
+      }
+
+      .field-input {
+        padding: 6px;
+      }
+
+      .u-field-link {
+        border: 1px solid $m-teal;
+        color: $m-teal;
+
+        &:focus, &:hover, &:active {
+          border-color: $m-teal-d3;
+          background-color: $m-teal-d3;
+          color: $white;
+        }
+      }
+    }
+
+    .u-field-message {
+      font-family: $avenir-book;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@mixin hms-input {
+  -webkit-font-smoothing: inherit;
+  -webkit-appearance: none;
+  transition: all .1s ease-in;
+  outline: none;
+  border: 2px solid $color-border;
+  border-radius: $default-border-radius;
+  box-shadow: none;
+  background: none $white;
+  text-overflow: ellipsis;
+  color: inherit;
+  font: inherit;
+
+  & + span:after {
+    display: inline-block;
+    position: absolute;
+    top: 0.2em;
+    right: 0.5em;
+    z-index: 10;
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 1.5em;
+  }
+
+  &.valid-input {
+    border-color: $color-success;
+
+    & + span:after {
+      color: $color-success;
+      content: '\f057';
+    }
+  }
+
+  &.invalid-input {
+    border-color: $color-error;
+
+    & + span:after {
+      color: $color-error;
+      content: '\f057';
+    }
+  }
+
+  &:focus, &:active {
+    border-color: $color-primary !important;
+    box-shadow: none;
+
+    & + span:after {
+      color: $color-primary;
+    }
+  }
+}

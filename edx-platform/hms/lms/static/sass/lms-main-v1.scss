@@ -1,0 +1,33 @@
+@import '../../bower_components/bootstrap/scss/bootstrap.scss';
+@import '../../bower_components/font-awesome/scss/font-awesome.scss';
+@import 'lms/static/sass/lms-main-v1.scss';
+
+@import 'fonts/webFontsKit';
+@import 'fonts/open-sans';
+@import 'partials/base/variables';
+@import 'mixins/main';
+
+@import 'base/reset';
+
+@import 'pages/course/instructor_input';
+
+@import 'global/main';
+@import 'pages/main';
+@import 'pages/courseware-accordion';
+
+// base - elements
+@import 'elements/controls';
+
+// shared - course
+@import 'shared/header';
+
+// shared - platform
+@import 'multicourse/dashboard';
+
+// base - specific views
+@import 'views/account-settings';
+@import 'views/decoupled-verification';
+@import 'views/login-register';
+@import 'views/verification';
+
+@import 'elements/system-feedback';

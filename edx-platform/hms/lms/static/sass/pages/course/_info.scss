@@ -1,0 +1,83 @@
+.info-wrapper {
+  .updates {
+    @include size(auto, auto);
+
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0;
+    max-width: 60%;
+    font: inherit;
+
+    h1 {
+      margin: 0 0 1.5em 0;
+      color: $color-primary;
+      font: inherit;
+      font-size: $font-size-h2;
+      font-weight: $headings-font-weight;
+    }
+
+    > section {
+      margin: 0;
+
+      > article {
+        margin: 0 0 1em 0;
+        border: 1px solid $color-border;
+        border-radius: $default-border-radius;
+        padding: 10px;
+
+        &:nth-child(odd) {
+          background-color: $color-background;
+        }
+
+        > h2 {
+          margin: 0 0 1em 0;
+          border-bottom: 1px solid $color-border;
+          padding: 0;
+          background: none;
+          color: inherit;
+          font: inherit;
+          font-weight: $headings-font-weight;
+
+          &:before {
+            margin: 0 0.4em 0 0;
+            color: $color-success;
+            font-family: 'FontAwesome', sans-serif;
+            font-weight: 500;
+            content: '\f073';
+          }
+        }
+      }
+    }
+  }
+
+  .handouts {
+    float: right;
+    border-left: 1px solid $color-border;
+    padding-bottom: 50px;
+    background: #f6f6f6;
+    width: 350px;
+    max-width: 30%;
+
+    h1 {
+      margin-top: 15px;
+      text-transform: uppercase;
+    }
+
+    ol {
+      list-style: none;
+
+      li {
+        margin-left: 0;
+
+        a {
+          color: #1aa1de;
+
+          &:hover {
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,267 @@
+section.course-info {
+  margin-top: 0;
+
+  header.course-profile {
+    @include size(auto, auto);
+
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    background-color: white;
+    padding: 80px 0;
+
+    .intro-inner-wrapper {
+      @include hms-container;
+
+      border: none;
+      box-shadow: 1px 1px 3px gray;
+      background: none;
+      padding: 10px 0 0;
+      width: 720px !important;
+
+      @media (max-width: 768px) {
+        width: 98% !important;
+      }
+
+      .table {
+        @include clearfix;
+
+        display: block;
+        margin-bottom: 0;
+        border-radius: $default-border-radius;
+        background-color: white;
+
+        .media {
+          @include size(25%, auto);
+
+          display: block;
+          float: left;
+          margin: 0;
+          padding: 10px;
+
+          .hero {
+            @include size(auto, 150px);
+
+            position: relative;
+            border: none;
+            padding: 0;
+
+            img {
+              @include size(100%, 100%);
+
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+          }
+
+          @media (max-width: $screen-sm-max) {
+            padding: 15px;
+          }
+
+          @media (max-width: 768px){
+            display: none;
+          }
+        }
+
+        .intro {
+          @include size(75%, auto);
+
+          display: block;
+          float: right;
+
+          @media (max-width: 768px){
+            width: 100%;
+          }
+
+          hgroup {
+            box-shadow: none;
+
+            h1 {
+              margin: 0;
+              text-align: left;
+              text-shadow: none;
+              letter-spacing: normal;
+              color: inherit;
+              font: inherit;
+              font-size: 1.6em;
+              font-weight: 500;
+              line-height: 1.4em;
+            }
+          }
+
+          .main-cta {
+            @include size(auto, auto);
+
+            float: none;
+            margin: 23px 0 0 0;
+            padding: 0;
+            overflow: hidden;
+
+            @media (max-width: $screen-sm-max) {
+              border: none;
+              padding: 0;
+            }
+
+            > span.register.disabled {
+              @include hms-btn-disabled();
+              @include size(100%, auto);
+            }
+
+            a {
+              display: block;
+              margin: 0;
+              padding: 0;
+
+              strong, &.register, &.add-to-cart {
+                @include hms-btn($white, $color-primary);
+                @include size(49%, auto);
+
+                @media (max-width: $screen-xs-max) {
+                  @include size(100%, auto);
+
+                  display: block;
+                }
+              }
+
+              &.register, &.add-to-cart, span.register.disabled.private, span.add-to-cart {
+                width: 100%;
+              }
+
+              span.register.disabled, span.add-to-cart {
+                @include hms-btn-disabled();
+                @include size(49%, auto);
+
+                margin: 0 2% 0 0;
+
+                @media (max-width: $screen-xs-max) {
+                  @include size(100%, auto);
+
+                  margin: 0 0 0.8em 0;
+                }
+              }
+
+              span.register.disabled.private {
+                @include hms-btn-disabled;
+                @include size(100%, auto);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .course-sidebar {
+    @include size(auto, auto);
+    @include make-md-column(8);
+    @include make-lg-column(8);
+
+    margin: 0;
+    padding-left: 0;
+    font: inherit;
+
+    nav {
+      display: none;
+    }
+
+    .inner-wrapper {
+      margin: 0;
+
+      table.course-summary {
+        @include table-rounded($default-border-radius);
+
+        margin: 0 0 60px 0;
+        border: 1px solid $color-border;
+        width: 100%;
+        table-layout: fixed;
+
+        thead {
+          background-color: $color-primary;
+          color: $white;
+
+          th {
+            font-weight: $headings-font-weight;
+          }
+
+          span {
+            color: inherit;
+          }
+        }
+
+        tbody {
+          background-color: $white;
+        }
+
+        th, td {
+          padding: 20px;
+          text-align: center;
+        }
+      }
+
+      section {
+        @include clearfix;
+
+        margin: 0 0 30px 0;
+
+        &.about {
+          p.alert {
+            @extend %hms-alert-error;
+          }
+        }
+
+        &.prerequisites {
+          ul > li {
+            font: inherit;
+          }
+        }
+
+        &.course-staff {
+          .teacher {
+            margin: 0 0 30px 0;
+
+            &:last-child {
+              margin: 0;
+            }
+
+            h3 {
+              margin: 0 0 15px 0;
+              color: inherit;
+              font: inherit;
+              font-weight: $headings-font-weight;
+            }
+
+            .teacher-image {
+              @include size(auto, auto);
+
+              margin: 5px 12px 0 0;
+
+              img {
+                width: 120px;
+                height: 160px;
+                min-height: 0;
+              }
+            }
+          }
+        }
+
+        &.faq {
+          .response {
+            h3 {
+              color: inherit;
+              font: inherit;
+              font-weight: $headings-font-weight;
+
+              &:before {
+                margin-right: 0.5em;
+                color: $color-primary;
+                font-family: 'FontAwesome', sans-serif;
+                content: '\f054';
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

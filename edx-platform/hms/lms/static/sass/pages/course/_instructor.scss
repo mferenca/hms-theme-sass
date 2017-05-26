@@ -1,0 +1,115 @@
+#instructor-dashboard-content {
+  code {
+    border-radius: $default-border-radius;
+    background-color: #f9f2f4;
+    padding: 2px 4px;
+    color: #c7254e;
+    font-size: 90%;
+  }
+}
+
+> .instructor-dashboard-wrapper,
+> .instructor-dashboard-wrapper-2 {
+  line-height: $line-height-base;
+
+  h2 {
+    font-size: $font-size-h2;
+    font-weight: $headings-font-weight;
+  }
+
+  @media screen and (max-width: 1080px) {
+    padding: 10px;
+  }
+
+  .instructor-dashboard-content,
+  .instructor-dashboard-content-2 {
+    padding: 30px;
+
+    h1 {
+      margin: 0 0 1.5em 0;
+      border: 0 none;
+      padding: 0;
+      color: $color-primary;
+      font: inherit;
+      font-size: $font-size-h2;
+      font-weight: $headings-font-weight;
+
+      & + hr {
+        display: none;
+      }
+    }
+
+    .wrapper-msg {
+      @extend %hms-alert-warning;
+    }
+
+    ul.instructor-nav {
+      margin: 0;
+      border: 1px solid $color-border;
+      border-radius: $default-border-radius;
+      padding: 0;
+      overflow: hidden;
+      color: inherit;
+      font: inherit;
+
+      li {
+        padding: 0;
+        margin: 0;
+
+        a {
+          display: inline-block;
+          float: none;
+          margin: 0;
+          padding: 0.5em 1em;
+          text-transform: uppercase;
+          color: inherit;
+
+          &:hover {
+            background-color: $color-background;
+            text-decoration: none;
+          }
+
+          &.active-section {
+            background-color: $color-secondary;
+            color: $white;
+          }
+        }
+      }
+    }
+
+    section#course_info {
+      table tbody tr td {
+        padding: 0;
+      }
+    }
+
+    section#membership {
+      .membership-section {
+        table thead tr td {
+          text-align: center;
+          font-weight: $headings-font-weight;
+        }
+      }
+    }
+
+    input {
+      display: inline-block;
+      margin: 0;
+      vertical-align: baseline;
+      color: inherit;
+      font: inherit;
+    }
+
+    input[type=button] {
+      @include hms-btn($white, $color-secondary);
+
+      font-size: 0.9em;
+      line-height: $line-height-base;
+    }
+
+    .member-list-widget .label {
+      display: table-cell;
+      border-radius: 0;
+    }
+  }
+}

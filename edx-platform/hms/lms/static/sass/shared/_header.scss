@@ -1,0 +1,12 @@
+// override lms/static/sass/shared/_header.scss
+
+.header-global {
+  .user {
+    .dropdown-menu {
+      &::before {
+        top: -6px;
+        @include right(20px);
+      }
+    }
+  }
+}

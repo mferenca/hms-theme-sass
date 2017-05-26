@@ -1,0 +1,57 @@
+%hms-alert {
+  margin: 0 0 20px 0;
+  outline: none;
+  border: none;
+  border-radius: $default-border-radius;
+  box-shadow: none;
+  background: none;
+  padding: 15px 20px;
+  color: inherit;
+
+  h2, h3, h4, h5 {
+    margin: 0;
+    text-transform: none;
+    letter-spacing: normal;
+    color: inherit;
+    font: inherit;
+    font-weight: $headings-font-weight;
+  }
+
+  p, ul {
+    color: inherit;
+    font: inherit;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
+}
+
+%hms-alert-error {
+  @extend %hms-alert;
+  background-color: lighten($color-error, 5%);
+  color: lighten($color-error, 60%);
+}
+
+%hms-alert-info {
+  @extend %hms-alert;
+  background-color: lighten($color-primary, 5%);
+  color: lighten($color-primary, 60%);
+}
+
+%hms-alert-success {
+  @extend %hms-alert;
+  background-color: lighten($color-success, 5%);
+  color: lighten($color-success, 60%);
+}
+
+%hms-alert-warning {
+  @extend %hms-alert;
+  background-color: lighten($color-warning, 5%);
+  color: lighten($color-warning, 60%);
+}

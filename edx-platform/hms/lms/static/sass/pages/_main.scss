@@ -1,0 +1,91 @@
+body,
+.view-login,
+.view-register,
+.view-passwordreset {
+  .content-wrapper {
+    @include size(auto, auto);
+
+    margin: 0;
+    padding: 0 0 $layout-spacing 0;
+    background: none;
+
+    @media (min-width: $screen-xs-max) {
+      margin-top: -$layout-header-height - $layout-footer-height;
+      padding-top: $layout-header-height + $layout-footer-height;
+      min-height: 97vh;
+    }
+  }
+}
+
+body.activation-page {
+  #global-navigation {
+    ol.right.nav-courseware {
+      display: none;
+    }
+  }
+}
+
+.content-wrapper {
+  background: $white;
+
+  .container {
+    margin-top: 12px;
+  }
+
+  .progress.wrapper-course-material {
+    margin-bottom: 0 !important;
+    box-shadow: none;
+    background-color: $white;
+    height: 85px;
+  }
+
+  > .introduction {
+    @include hms-container;
+
+    margin-top: $layout-spacing;
+    background: none;
+
+    header {
+      @include size(auto, auto);
+
+      background: none;
+      border: 0 none;
+
+      h1.title {
+        position: static;
+        margin: 0;
+        padding: 0;
+        color: inherit;
+        font: inherit;
+
+        .title-super {
+          display: block;
+          text-transform: none;
+          color: $color-primary;
+          font: inherit;
+          font-size: $font-size-h1;
+        }
+
+        .title-sub {
+          display: block;
+          margin: 0;
+          text-transform: none;
+          color: inherit;
+          font: inherit;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+  @import 'course/main';
+
+  @import 'static';
+  @import 'error';
+
+  @import 'homepage';
+  @import 'courses';
+  @import 'dashboard';
+
+  @import 'activation';
+}

@@ -1,0 +1,77 @@
+#lean_overlay {
+  background: none transparentize($black, 0.4);
+}
+
+.modal, .leanModal_box {
+  @include hms-modal;
+
+  &.video-modal {
+    @include hms-container-modal;
+    @include hms-video-modal;
+  }
+
+  button.dismiss:not(.close-modal) {
+    @include hms-btn($white, $color-secondary);
+  }
+}
+
+#forgot-password-modal {
+  @include hms-modal;
+
+  #password-reset {
+    padding: 0;
+
+    header {
+      margin: 0 0 2em 0;
+      padding: 0;
+
+      h2 {
+        margin: 0;
+        color: $color-primary;
+        text-align: center;
+        text-transform: none;
+        font: inherit;
+        font-size: $font-size-h2;
+        font-weight: $headings-font-weight;
+      }
+    }
+
+    .instructions {
+      padding: 0 0 1em 0;
+
+      p {
+        margin: 0 0 1em 0;
+      }
+    }
+
+    form {
+      fieldset {
+        legend {
+          display: none;
+        }
+
+        label {
+          font: inherit;
+
+          &:after {
+            display: none;
+          }
+        }
+
+        .field.is-focused {
+          label, .tip {
+            color: inherit;
+          }
+        }
+
+        input[type=email] {
+          @include hms-input;
+        }
+      }
+
+      button[type=submit] {
+        @include hms-btn($white, $color-secondary);
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<%page expression_filter="h"/>
+
+<%!
+import json
+
+from django.core.urlresolvers import reverse
+from django.conf import settings
+from django.utils.translation import ugettext as _
+
+from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_string
+%>
+
+<!-- <%namespace name='static' file='/static_content.html'/> -->
+
+<%inherit file="/main.html"/>
+<%def name="online_help_token()"><% return "learneraccountsettings" %></%def>
+<%namespace name='static' file='/static_content.html'/>
+
+<%block name="pagetitle">${_("Account Settings")}</%block>
+<%block name="bodyclass">view-account-settings</%block>
+
+% if duplicate_provider:
+    <section>
+        <%include file='/dashboard/_dashboard_third_party_error.html' />
+    </section>
+% endif
+
+<nav class="wrapper-course-material-dashboard navbar" role="navigation">
+  <div class="course-material">
+    <ol class="course-tabs nav">
+      <div class="header-global slim user-dd">
+        <%include file="../user_dropdown.html"/>
+      </div>
+    </ol>
+  </div>
+</nav>
+
+<div class="account-settings-username-container dashboard">
+    <div class="dashboard-content-wrapper">
+        <div class="dashboard-content">
+            <div class="info--username">
+                <span class="data">${ user.profile.name | h }</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper-account-settings"></div>
+
+<%block name="headextra">
+    <%static:css group='style-course'/>
+</%block>
+
+<%block name="js_extra">
+<%static:require_module module_name="js/student_account/views/account_settings_factory" class_name="AccountSettingsFactory">
+    var fieldsData = ${ fields | n, dump_js_escaped_json },
+    platformName = '${ static.get_platform_name() | n, js_escaped_string }';
+
+    AccountSettingsFactory(
+        fieldsData,
+        '${ user_accounts_api_url | n, js_escaped_string }',
+        '${ user_preferences_api_url | n, js_escaped_string }',
+        ${ user.id | n, dump_js_escaped_json },
+        platformName
+    );
+</%static:require_module>
+</%block>

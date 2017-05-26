@@ -1,0 +1,32 @@
+// override lms/static/sass/views/_decoupled-verification.scss
+
+.verification-process {
+  .pay-and-verify, .incourse-reverify, .reverify {
+    .payment-info {
+      padding: 5px 0;
+
+      .copy {
+        p {
+          font-family: $avenir-book;
+        }
+      }
+    }
+
+    .nav-wizard {
+      .right {
+        padding: 12px 22px;
+        box-shadow: none;
+        background-color: $crimson;
+        text-shadow: rgb(0, 57, 84) 0 1px 0;
+        line-height: 16px;
+        font-family: $avenir-book;
+        font-size: 15px;
+        font-weight: normal;
+
+        &:hover, &:focus {
+          background-color: $crimson;
+        }
+      }
+    }
+  }
+}

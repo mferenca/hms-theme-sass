@@ -1,0 +1,305 @@
+@import 'about';
+@import 'book';
+@import 'navigation';
+
+.capa_inputtype.textline,
+.formulaequationinput {
+  input {
+    margin-left: 39px;
+  }
+  .status {
+    position: relative;
+    right: -15px;
+    bottom: 5px;
+  }
+}
+
+.xmodule_display.xmodule_CapaModule div.problem div.incorrect p.status {
+  background: rgba(0, 0, 0, 0) url("/static/images/incorrect-icon.png") no-repeat scroll center center;
+}
+
+.xmodule_display.xmodule_CapaModule div.problem div.correct p.status {
+  background: rgba(0, 0, 0, 0) url("/static/images/correct-icon.png") no-repeat scroll center center;
+}
+
+.course-material {
+  @include hms-container;
+
+  margin-top: 10px;
+  border-radius: 0;
+  box-shadow: none;
+  background: none;
+
+  @media (max-width: $screen-sm-max) {
+    width: 100%;
+  }
+
+  .inner-wrapper {
+    @include size(auto, auto);
+
+    margin: 0;
+    max-width: none;
+
+    .course-tabs {
+      margin: 0;
+      padding: 0;
+      border-radius: 0;
+
+      li {
+        margin: 0 0.5em 0 0;
+
+        &:last-child {
+          margin: 0;
+
+          @media (max-width: $screen-xs-max) {
+            &.right {
+              @include clearfix;
+              @include size(auto, auto);
+
+              float: none;
+
+              a {
+                @include size(auto, 100%);
+
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+
+        a {
+          border-radius: $default-border-radius;
+          padding: 8px 12px;
+          color: inherit;
+          font-family: $avenir-book !important;
+          font-size: 0.9em;
+          font-weight: normal;
+
+          &:hover {
+            background-color: $white;
+          }
+
+          &.active {
+            box-shadow: none;
+            background: $color-primary none;
+            text-shadow: none;
+            color: $white;
+          }
+
+          &.new-post-btn {
+            @include hms-btn($white, $color-secondary);
+
+            font-size: 0.9em;
+
+            span.icon {
+              @include size(auto, auto);
+
+              display: inline;
+              float: none;
+              margin: 0;
+              padding: 0 0.5em 0 0;
+              color: inherit;
+              font: inherit;
+              font-family: 'FontAwesome', sans-serif;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.container {
+  @include hms-container;
+
+  margin-top: $layout-spacing / 2;
+  margin-bottom: 0;
+
+  > div {
+    @include size(auto, auto);
+    @include clearfix;
+
+    display: block;
+    padding: 30px;
+    border: 1px solid $color-border;
+    border-radius: $default-border-radius;
+    box-shadow: none;
+    background: $white none;
+    overflow: hidden;
+
+    .wrap-instructor-info {
+      margin: 0;
+
+      &.studio-view {
+        top: 0;
+      }
+    }
+
+    @media (max-width: $screen-xs-max) {
+      padding: 10px;
+    }
+  }
+
+  @import 'courseware';
+  @import 'pages';
+  @import 'info';
+  @import 'wiki';
+  @import 'progression';
+  @import 'instructor';
+  @import 'forum';
+}
+
+.discussion-board {
+  .page-header.has-secondary {
+    .page-header-main {
+      margin-left: 20px;
+    }
+
+    margin: 0;
+    padding: 25px 15px 35px;
+    border: 1px solid $color-border;
+    border-bottom: none;
+
+    .page-header-secondary {
+      float: right !important;
+
+      .form-actions {
+        button {
+          transition: color 0.125s ease-in-out 0s, border-color 0.125s ease-in-out 0s, background 0.125s ease-in-out 0s, box-shadow 0.125s ease-in-out 0s;
+          border-color: #0075b4;
+          background: $white;
+          height: inherit !important;
+          color: #0075b4;
+
+          &:hover {
+            border-color: #2991c3;
+            box-shadow: none;
+            background: #2991c3;
+            color: #f2f8fb;
+          }
+
+          &:focus {
+            border-color: #2991c3;
+            background: #2991c3;
+            color: #f2f8fb;
+          }
+
+          &:active {
+            border-color: #065683;
+            background: #cce3f0;
+            color: #065683;
+          }
+        }
+      }
+
+      .forum-search {
+        margin-left: 20px;
+
+        input {
+          -webkit-appearance: initial;
+          border: 1px solid #d9d9d9;
+          padding: 0.625rem;
+        }
+
+        button {
+          -webkit-transition: color 0.125s ease-in-out 0s, border-color 0.125s ease-in-out 0s, background 0.125s ease-in-out 0s, box-shadow 0.125s ease-in-out 0s;
+          -moz-transition: color 0.125s ease-in-out 0s, border-color 0.125s ease-in-out 0s, background 0.125s ease-in-out 0s, box-shadow 0.125s ease-in-out 0s;
+          transition: color 0.125s ease-in-out 0s, border-color 0.125s ease-in-out 0s, background 0.125s ease-in-out 0s, box-shadow 0.125s ease-in-out 0s;
+          margin-left: -5px;
+          border-top: none;
+          border-color: #0075b4;
+          border-radius: 0;
+          box-shadow: none;
+          background: #0075b4;
+          color: #f2f8fb;
+
+          &:hover {
+            border-color: #2991c3;
+            background: #2991c3;
+            color: #f2f8fb;
+          }
+        }
+      }
+    }
+  }
+
+  .page-content {
+    padding: 0;
+    height: 100%;
+    min-height: 500px;
+
+    .forum-nav {
+      min-height: 561px;
+
+      .forum-nav-browse-menu-wrapper {
+        min-height: inherit;
+
+        .forum-nav-browse-menu {
+          min-height: 520px;
+        }
+      }
+
+      .forum-nav-thread-list {
+        min-height: 534px;
+
+        .forum-nav-thread {
+          .forum-nav-thread-link {
+            border-left: none;
+
+            &.is-active {
+              background-color: transparent;
+
+              .forum-nav-thread-wrapper-1 {
+                .forum-nav-thread-title {
+                  color: $color-primary;
+                }
+              }
+            }
+
+            .forum-nav-thread-wrapper-0 {
+              .icon {
+                color: #acacac;
+              }
+            }
+
+            .forum-nav-thread-wrapper-1 {
+              .forum-nav-thread-title {
+                color: #3c3c3c;
+              }
+            }
+
+            .forum-nav-thread-labels {
+              .post-label-following {
+                display: inline;
+                margin-top: 5px;
+                border: 1px solid #0078b0;
+                border-radius: 3px;
+                padding: 1px 6px;
+                text-transform: uppercase;
+                white-space: nowrap;
+                color: #0078b0;
+                font-size: 9px;
+
+                .icon {
+                  color: #0079bc;
+                }
+              }
+            }
+
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+
+    .discussion-column {
+      padding-right: 20px;
+    }
+  }
+
+  .posted-details {
+    margin: 15px 0;
+  }
+}

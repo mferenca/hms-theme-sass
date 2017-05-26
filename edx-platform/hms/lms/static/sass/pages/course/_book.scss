@@ -1,0 +1,59 @@
+> .book-wrapper {
+  @include hms-container;
+
+  position: relative;
+  margin-top: $layout-spacing / 2;
+  min-height: 80vh;
+
+  > .book-sidebar {
+    @include size(100%, auto);
+    @include make-md-column(3);
+    @include make-lg-column(3);
+
+    display: block;
+    float: left;
+    transition: none;
+    border: 1px solid $color-border;
+    border-radius: $default-border-radius 0 0 $default-border-radius;
+    background: white none;
+    padding: 0;
+    font: inherit;
+
+    @media (max-width: $screen-sm-max) {
+      @include size(100%, 100%);
+
+      float: none;
+      margin: 0 0 1em 0;
+      border-radius: $default-border-radius;
+    }
+
+    ul#booknav {
+      font-size: 0.9em;
+
+      a, a:hover {
+        color: $color-primary;
+      }
+    }
+  }
+
+  > .book {
+    @include size(100%, auto);
+    @include make-md-column(9);
+    @include make-lg-column(9);
+
+    display: block;
+    border: 1px solid $color-border;
+    border-left: 0 none;
+    border-radius: 0 $default-border-radius $default-border-radius 0;
+    background-color: $white;
+    padding: 0;
+    overflow: hidden;
+
+    @media (max-width: $screen-sm-max) {
+      @include size(auto, auto);
+
+      float: none;
+      border-radius: $default-border-radius;
+    }
+  }
+}

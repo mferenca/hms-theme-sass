@@ -1,0 +1,3 @@
+<%! from django.utils.translation import ugettext as _ %>
+
+${_("Activate Your {sender_name} Account").format(sender_name=settings.ACTIVATION_EMAIL_SENDER_NAME)}

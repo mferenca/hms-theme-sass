@@ -1,0 +1,183 @@
+> .home {
+  margin: 0;
+  background: none;
+
+  > header {
+    @include size(auto, auto);
+
+    margin: 0;
+    border: none;
+    padding: 60px 0;
+    background: url('../images/D20_7860_bcmp_front.jpg') 0 40%/cover no-repeat;
+    height: 350px;
+
+    .outer-wrapper {
+      @include hms-container;
+
+      border-radius: $default-border-radius;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      .title {
+        @include size(auto, auto);
+        @include make-md-column(8);
+        @include make-lg-column(8);
+
+        float: none;
+        transition: none;
+        margin: 0;
+        border: 0 none;
+        box-shadow: none;
+        background: none;
+        padding: 0;
+        min-height: 0;
+
+        hgroup {
+          transition: none;
+          padding: 0;
+          color: $white;
+
+          h1 {
+            margin: 0;
+            text-transform: none;
+            text-shadow: none;
+            color: inherit;
+            font: inherit;
+            font-size: $font-size-h1;
+            font-weight: 500;
+          }
+
+          h2 {
+            margin: 0;
+            text-transform: none;
+            text-shadow: none;
+            color: inherit;
+            font: inherit;
+            font-size: $font-size-h2;
+          }
+        }
+      }
+
+      .media {
+        @include size(auto, auto);
+        @include make-md-column(4);
+        @include make-lg-column(4);
+
+        display: block;
+        float: none;
+        margin: 0;
+        border: 0 none;
+        background: none;
+        padding: 0;
+
+        @media (max-width: $screen-sm-max) {
+          width: 350px;
+        }
+
+        @media (max-width: $screen-xs-max) {
+          width: auto;
+        }
+
+        .hero {
+          @include size(auto, 170px);
+
+          position: static;
+          margin: auto;
+          border: 1px solid $color-border;
+          border-radius: $default-border-radius;
+          background: $black none;
+          overflow: initial;
+
+          @media (max-width: $screen-sm-max) {
+            margin: 15px 0 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    @include hms-container;
+  }
+
+  .courses {
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 0;
+    text-align: center;
+
+    .courses-listing-item {
+      @include make-xs-column(12);
+      @include make-sm-column(6);
+      @include make-md-column(6);
+      @include make-lg-column(4);
+
+      display: block;
+      margin: 15px 0;
+      text-align: left;
+
+      .course {
+        border: 1px solid $white;
+        border-radius: 0;
+        box-shadow: none;
+        background: $white none;
+
+        &:hover {
+          border-color: $color-primary;
+          box-shadow: none;
+        }
+
+        .inner-wrapper {
+          border: 0 none;
+
+          .course-preview {
+            border-bottom: 1px solid $color-border;
+            box-shadow: none;
+            background: transparentize($white, 0.1) none;
+
+            hgroup {
+              width: 100%;
+
+              h2 {
+                color: $black;
+                text-shadow: none;
+                font-family: $font-family-sans-serif;
+                font-size: 14px;
+                font-weight: $headings-font-weight;
+              }
+            }
+
+            .info-link {
+              display: none;
+            }
+
+            .course-number {
+              display: none;
+            }
+          }
+        }
+
+        .status {
+          display: none;
+        }
+
+        .meta-info {
+          right: 5px;
+          bottom: 5px;
+          border: 0 none;
+          border-radius: $default-border-radius;
+          box-shadow: none;
+          background: transparentize($black, 0.2) none;
+
+          p {
+            margin: 0;
+            padding: 4px 8px;
+            color: $white;
+            font: inherit;
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
+  }
+}

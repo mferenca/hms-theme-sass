@@ -1,0 +1,33 @@
+// override lms/static/sass/multicourse/_dashboard.scss
+
+// lms - views - user/student dashboard
+// ====================
+
+// Table of Contents
+// * +Dashboard - Sidebar
+// * +Dashboard - Course Listing
+// * +Dashboard - Course Item
+// * +Misc - Uncategorized
+// * +Dashboard - Banner
+
+.view-dashboard {
+  .wrapper-course-material-dashboard {
+    ol.course-tabs {
+      li {
+        a {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+// +Dashboard - Banner
+// ====================
+.dashboard-banner {
+  .wrapper-msg {
+    .msg {
+      border-bottom: none;
+    }
+  }
+}

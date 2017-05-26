@@ -1,0 +1,29 @@
+> .profile-wrapper {
+  > .course-info {
+    @include size(auto, auto);
+
+    display: block;
+    padding: 0;
+
+    header {
+      margin: 0 0 3em 0;
+      border: 0 none;
+      padding: 0;
+      font: inherit;
+
+      h1 {
+        margin: 0;
+        border: 0 none;
+        padding: 0;
+        color: $color-primary;
+        font: inherit;
+        font-size: $font-size-h2;
+        font-weight: $headings-font-weight;
+      }
+    }
+
+    #grade-detail-graph {
+      width: 100%;
+    }
+  }
+}

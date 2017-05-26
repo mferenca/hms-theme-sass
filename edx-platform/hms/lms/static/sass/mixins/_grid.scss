@@ -1,0 +1,44 @@
+@mixin make-xs-column($columns) {
+  position: relative;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: percentage(($columns / 12));
+  min-height: 1px;
+}
+
+@mixin make-sm-column($columns) {
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  min-height: 1px;
+
+  @media (min-width: $screen-sm-min) {
+    float: left;
+    width: percentage(($columns / 12));
+  }
+}
+
+@mixin make-md-column($columns) {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @media (min-width: $screen-md-min) {
+    float: left;
+    width: percentage(($columns / 12));
+  }
+}
+
+@mixin make-lg-column($columns) {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @media (min-width: 1200px) {
+    float: left;
+    width: percentage(($columns / 12));
+  }
+}
