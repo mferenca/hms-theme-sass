@@ -1,3 +1,55 @@
+@media only screen and (max-width: 1080px) {
+  .navbar-header {
+    .navbar-brand {
+      display: block;
+      padding: 12px 15px;
+      overflow: hidden;
+      color: $white;
+      text-align: center;
+      text-overflow: ellipsis;
+      line-height: 26px;
+      white-space: nowrap;
+    }
+
+    .navbar-toggle {
+      display: block;
+      position: relative;
+      float: right;
+      margin-top: 8px;
+      margin-right: 15px;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      background: $color-nav-hamburger-active none;
+      padding: 9px 10px;
+
+      &:focus {
+        outline: none;
+      }
+
+      .icon-bar {
+        display: block;
+        border-radius: 1px;
+        background-color: $color-nav-hamburger;
+        width: 22px;
+        height: 2px;
+      }
+
+      .icon-bar + .icon-bar {
+        margin-top: 4px;
+      }
+
+      &.collapsed {
+        background: $color-nav-hamburger none;
+
+        .icon-bar {
+          background-color: $color-nav-hamburger-line;
+        }
+      }
+    }
+  }
+}
+
 @import 'about';
 @import 'book';
 @import 'navigation';

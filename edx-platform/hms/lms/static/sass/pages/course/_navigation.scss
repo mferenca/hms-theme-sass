@@ -1,12 +1,6 @@
 .wrapper-course-material {
   .navbar-header {
-    .navbar-toggle {
-      display: none;
-    }
-
-    .navbar-brand {
-      display: none;
-    }
+    display: none;
   }
 
   .collapse-and-dropdown-container {
@@ -32,6 +26,7 @@
         @media (min-width: 1080px) {
           display: block;
           margin-top: 10px;
+          padding: 0;
         }
       }
 
@@ -100,53 +95,7 @@
     }
 
     .navbar-header {
-      .navbar-brand {
-        display: block;
-        float: none;
-        padding: 12px 15px;
-        overflow: hidden;
-        color: $white;
-        text-align: center;
-        line-height: 26px;
-      }
-
-      .navbar-toggle {
-        display: block;
-        position: relative;
-        float: right;
-        margin-top: 8px;
-        margin-right: 15px;
-        margin-bottom: 8px;
-        border: 0;
-        border-radius: 0;
-        box-shadow: none;
-        background: $color-nav-hamburger-active none;
-        padding: 9px 10px;
-
-        &:focus {
-          outline: none;
-        }
-
-        .icon-bar {
-          display: block;
-          border-radius: 1px;
-          background-color: $color-nav-hamburger;
-          width: 22px;
-          height: 2px;
-        }
-
-        .icon-bar + .icon-bar {
-          margin-top: 4px;
-        }
-
-        &.collapsed {
-          background: $color-nav-hamburger none;
-
-          .icon-bar {
-            background-color: $color-nav-hamburger-line;
-          }
-        }
-      }
+      display: block;
     }
 
     .collapse-and-dropdown-container {
@@ -157,6 +106,7 @@
 
         ol.course-tabs {
           margin: 6px 0;
+          padding: 0;
 
           li {
             width: 100%;
