@@ -302,8 +302,8 @@
 }
 
 section.dashboard-banner {
-  .wrapper-msg {
-    padding-top: 46px;
+  .wrapper-msg .msg {
+    border-bottom: none;
 
     @media (max-width: $screen-md-min) {
       width: 100%;
