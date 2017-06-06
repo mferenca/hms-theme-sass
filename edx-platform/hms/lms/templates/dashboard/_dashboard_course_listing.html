@@ -47,12 +47,12 @@ from student.helpers import (
 <article class="course${mode_class}">
   <% course_target = reverse('info', args=[unicode(course_overview.id)]) %>
   <section class="details">
-    <div class="dashboard-course-image col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="dashboard-course-image">
       <a href="${course_target}" class="cover">
         <img src="${course_overview.course_image_url}" class="course-image" alt="${_('{course_number} {course_name} Home Page').format(course_number=course_overview.number, course_name=course_overview.display_name_with_default) |h}" />
       </a>
     </div>
-    <div class="dashboard-course-info col-xs-8 col-sm-8 col-md-8 col-lg-8"> 
+    <div class="dashboard-course-info">
       <div class="wrapper-course-details">
         <h3 class="course-title">
           % if show_courseware_link:
@@ -65,186 +65,184 @@ from student.helpers import (
             <span>${course_overview.display_name_with_default}</span>
           % endif
         </h3>
-        <div>
-          <div class="info-actions-wrapper">
-            <div class="course-info">
-              <span class="info-date-block" data-tooltip="Hi">
-              % if course_overview.has_ended():
-                ${_("Course has ended")}
-              % elif course_overview.has_started():
-                ${_("Course in progress")}
-              % elif course_overview.start_date_is_still_default: # Course start date TBD
-                ${_("Course closed")}
-              % else:   # hasn't started yet
-                ${_("Course start - {start_date}").format(start_date=course_overview.start_datetime_text("SHORT_DATE"))}
-              % endif
-              </span>
-            </div>
-            <div class="wrapper-course-actions">
-              <div class="course-actions">
-                % if show_courseware_link:
-                  % if course_overview.has_ended():
-                    % if not is_course_blocked:
-                      <a href="${course_target}" class="enter-course archived">${_('View Archived Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
-                    % else:
-                      <a class="enter-course-blocked archived">${_('View Archived Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
-                    % endif
+        <div class="info-actions-wrapper">
+          <div class="course-info">
+            <span class="info-date-block" data-tooltip="Hi">
+            % if course_overview.has_ended():
+              ${_("Course has ended")}
+            % elif course_overview.has_started():
+              ${_("Course in progress")}
+            % elif course_overview.start_date_is_still_default: # Course start date TBD
+              ${_("Course closed")}
+            % else:   # hasn't started yet
+              ${_("Course start - {start_date}").format(start_date=course_overview.start_datetime_text("SHORT_DATE"))}
+            % endif
+            </span>
+          </div>
+          <div class="wrapper-course-actions">
+            <div class="course-actions">
+              % if show_courseware_link:
+                % if course_overview.has_ended():
+                  % if not is_course_blocked:
+                    <a href="${course_target}" class="enter-course archived">${_('View Archived Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
                   % else:
-                    % if not is_course_blocked:
-                      <a href="${course_target}" class="enter-course">${_('View Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
-                    % else:
-                      <a class="enter-course-blocked">${_('View Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
-                    % endif
+                    <a class="enter-course-blocked archived">${_('View Archived Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
                   % endif
-
-                  % if share_settings:
-                    <%
-                      if share_settings.get("CUSTOM_COURSE_URLS", False):
-                        if course_overview.social_sharing_url:
-                          share_url = urllib.quote_plus(course_overview.social_sharing_url)
-                        else:
-                          share_url = ''
-                      else:
-                        share_url = urllib.quote_plus(request.build_absolute_uri(reverse('about_course', args=[unicode(course_overview.id)])))
-                      share_window_name = 'shareWindow'
-                      share_window_config = 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=640, height=480'
-                    %>
-                    % if share_url and share_settings.get('FACEBOOK_SHARING', False):
-                      <% facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' + share_url %>
-                        <a
-                          data-tooltip="${_('Share on Facebook')}"
-                          class="action action-facebook"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          href="${facebook_url}"
-                          target="_blank"
-                          title="${_('Share on Facebook')}"
-                          onclick="window.open('${facebook_url}', '${share_window_name}', '${share_window_config}'); return false;">
-                          <span class="sr">${_('Facebook')}</span>
-                          <i class="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
-                    % endif
-                    % if share_url and share_settings.get('TWITTER_SHARING', False):
-                      <% share_text_default = _("I'm learning on {platform_name}:").format(platform_name=settings.PLATFORM_NAME) %>
-                      <% share_text = urllib.quote_plus(share_settings.get('TWITTER_SHARING_TEXT', share_text_default)) %>
-                      <% twitter_url = 'https://twitter.com/intent/tweet?text=' + share_text + '%20' + share_url %>
-                        <a
-                          data-tooltip="${_('Share on Twitter')}"
-                          class="action action-twitter"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                          href="${twitter_url}"
-                          target="_blank"
-                          title="${_('Share on Twitter')}"
-                          onclick="window.open('${twitter_url}', '${share_window_name}', '${share_window_config}'); return false;">
-                          <span class="sr">${_('Twitter')}</span>
-                          <i class="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                    % endif
+                % else:
+                  % if not is_course_blocked:
+                    <a href="${course_target}" class="enter-course">${_('View Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
+                  % else:
+                    <a class="enter-course-blocked">${_('View Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
                   % endif
                 % endif
-                <div class="wrapper-action-more">
-                  <a href="#actions-dropdown-${dashboard_index}" class="action action-more" id="actions-dropdown-link-${dashboard_index}" aria-haspopup="true" aria-expanded="false" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}">
-                    <span class="sr">${_('Course options dropdown')}</span>
-                    <i class="fa fa-cog" aria-hidden="true"></i>
-                  </a>
-                  <div class="actions-dropdown" id="actions-dropdown-${dashboard_index}" aria-label="${_('Additional Actions Menu')}">
-                    <ul class="actions-dropdown-list" id="actions-dropdown-list-${dashboard_index}" aria-label="${_('Available Actions')}" role="menu">
-                      <li class="actions-item" id="actions-item-unenroll-${dashboard_index}">
-                        % if is_paid_course and show_refund_option:
-                          ## Translators: The course name will be added to the end of this sentence.
-                          % if not is_course_blocked:
-                          <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will be refunded the amount you paid.")}')">
-                            ${_('Unenroll')}
-                          </a>
-                          % else:
-                          <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will be refunded the amount you paid.")}')">
-                            ${_('Unenroll')}
-                          </a>
-                          % endif
-                        % elif is_paid_course and not show_refund_option:
-                          ## Translators: The course's name will be added to the end of this sentence.
-                          % if not is_course_blocked:
-                          <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will not be refunded the amount you paid.")}')">
-                            ${_('Unenroll')}
-                          </a>
-                          % else:
-                          <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will not be refunded the amount you paid.")}')">
-                            ${_('Unenroll')}
-                          </a>
-                          % endif
-                        % elif enrollment.mode != "verified":
-                          ## Translators: The course's name will be added to the end of this sentence.
-                          % if not is_course_blocked:
-                          <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message('${_("Are you sure you want to unenroll from %(course_number)s?")}', '')">
-                            ${_('Unenroll')}
-                          </a>
-                          % else:
-                          <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message('${_("Are you sure you want to unenroll from %(course_number)s?")}', '')">
-                            ${_('Unenroll')}
-                          </a>
-                          % endif
-                        % elif show_refund_option:
-                          ## Translators: The course's name will be added to the end of this sentence.
-                          % if not is_course_blocked:
-                          <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message(
-                                          '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
-                                          '${_("You will be refunded the amount you paid.")}'
-                                      )"
-                          >
-                            ${_('Unenroll')}
-                          </a>
-                          % else:
-                          <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message(
-                                          '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
-                                          '${_("You will be refunded the amount you paid.")}'
-                                      )"
-                          >
-                            ${_('Unenroll')}
-                          </a>
-                          % endif
+
+                % if share_settings:
+                  <%
+                    if share_settings.get("CUSTOM_COURSE_URLS", False):
+                      if course_overview.social_sharing_url:
+                        share_url = urllib.quote_plus(course_overview.social_sharing_url)
+                      else:
+                        share_url = ''
+                    else:
+                      share_url = urllib.quote_plus(request.build_absolute_uri(reverse('about_course', args=[unicode(course_overview.id)])))
+                    share_window_name = 'shareWindow'
+                    share_window_config = 'toolbar=no, location=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=640, height=480'
+                  %>
+                  % if share_url and share_settings.get('FACEBOOK_SHARING', False):
+                    <% facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' + share_url %>
+                      <a
+                        data-tooltip="${_('Share on Facebook')}"
+                        class="action action-facebook"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        href="${facebook_url}"
+                        target="_blank"
+                        title="${_('Share on Facebook')}"
+                        onclick="window.open('${facebook_url}', '${share_window_name}', '${share_window_config}'); return false;">
+                        <span class="sr">${_('Facebook')}</span>
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                  % endif
+                  % if share_url and share_settings.get('TWITTER_SHARING', False):
+                    <% share_text_default = _("I'm learning on {platform_name}:").format(platform_name=settings.PLATFORM_NAME) %>
+                    <% share_text = urllib.quote_plus(share_settings.get('TWITTER_SHARING_TEXT', share_text_default)) %>
+                    <% twitter_url = 'https://twitter.com/intent/tweet?text=' + share_text + '%20' + share_url %>
+                      <a
+                        data-tooltip="${_('Share on Twitter')}"
+                        class="action action-twitter"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        href="${twitter_url}"
+                        target="_blank"
+                        title="${_('Share on Twitter')}"
+                        onclick="window.open('${twitter_url}', '${share_window_name}', '${share_window_config}'); return false;">
+                        <span class="sr">${_('Twitter')}</span>
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                  % endif
+                % endif
+              % endif
+              <div class="wrapper-action-more">
+                <a href="#actions-dropdown-${dashboard_index}" class="action action-more" id="actions-dropdown-link-${dashboard_index}" aria-haspopup="true" aria-expanded="false" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}">
+                  <span class="sr">${_('Course options dropdown')}</span>
+                  <i class="fa fa-cog" aria-hidden="true"></i>
+                </a>
+                <div class="actions-dropdown" id="actions-dropdown-${dashboard_index}" aria-label="${_('Additional Actions Menu')}">
+                  <ul class="actions-dropdown-list" id="actions-dropdown-list-${dashboard_index}" aria-label="${_('Available Actions')}" role="menu">
+                    <li class="actions-item" id="actions-item-unenroll-${dashboard_index}">
+                      % if is_paid_course and show_refund_option:
+                        ## Translators: The course name will be added to the end of this sentence.
+                        % if not is_course_blocked:
+                        <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will be refunded the amount you paid.")}')">
+                          ${_('Unenroll')}
+                        </a>
                         % else:
-                          ## Translators: The course's name will be added to the end of this sentence.
-                          % if not is_course_blocked:
-                          <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message(
-                                          '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
-                                          '${_("The refund deadline for this course has passed, so you will not receive a refund.")}'
-                                      )"
-                          >
-                            ${_('Unenroll')}
-                          </a>
-                          % else:
-                          <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
-                             onclick="set_unenroll_message(
-                                          '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
-                                          '${_("The refund deadline for this course has passed, so you will not receive a refund.")}'
-                                      )"
-                          >
-                            ${_('Unenroll')}
-                          </a>
-                          % endif
+                        <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will be refunded the amount you paid.")}')">
+                          ${_('Unenroll')}
+                        </a>
                         % endif
-                      </li>
-                      <li class="actions-item" id="actions-item-email-settings-${dashboard_index}">
-                        % if show_email_settings:
-                          % if not is_course_blocked:
-                            <a href="#email-settings-modal" class="action action-email-settings" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}" data-optout="${unicode(course_overview.id) in course_optouts}">${_('Email Settings')}</a>
-                          % else:
-                            <a class="action action-email-settings is-disabled" data-course-id="${course_overview.id| h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}" data-optout="${unicode(course_overview.id) in course_optouts}">${_('Email Settings')}</a>
-                          % endif
+                      % elif is_paid_course and not show_refund_option:
+                        ## Translators: The course's name will be added to the end of this sentence.
+                        % if not is_course_blocked:
+                        <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will not be refunded the amount you paid.")}')">
+                          ${_('Unenroll')}
+                        </a>
+                        % else:
+                        <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message('${_("Are you sure you want to unenroll from the purchased course %(course_number)s?")}', '${_("You will not be refunded the amount you paid.")}')">
+                          ${_('Unenroll')}
+                        </a>
                         % endif
-                      </li>
-                    </ul>
-                  </div>
+                      % elif enrollment.mode != "verified":
+                        ## Translators: The course's name will be added to the end of this sentence.
+                        % if not is_course_blocked:
+                        <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message('${_("Are you sure you want to unenroll from %(course_number)s?")}', '')">
+                          ${_('Unenroll')}
+                        </a>
+                        % else:
+                        <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message('${_("Are you sure you want to unenroll from %(course_number)s?")}', '')">
+                          ${_('Unenroll')}
+                        </a>
+                        % endif
+                      % elif show_refund_option:
+                        ## Translators: The course's name will be added to the end of this sentence.
+                        % if not is_course_blocked:
+                        <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message(
+                                        '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
+                                        '${_("You will be refunded the amount you paid.")}'
+                                    )"
+                        >
+                          ${_('Unenroll')}
+                        </a>
+                        % else:
+                        <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message(
+                                        '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
+                                        '${_("You will be refunded the amount you paid.")}'
+                                    )"
+                        >
+                          ${_('Unenroll')}
+                        </a>
+                        % endif
+                      % else:
+                        ## Translators: The course's name will be added to the end of this sentence.
+                        % if not is_course_blocked:
+                        <a href="#unenroll-modal" class="action action-unenroll" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message(
+                                        '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
+                                        '${_("The refund deadline for this course has passed, so you will not receive a refund.")}'
+                                    )"
+                        >
+                          ${_('Unenroll')}
+                        </a>
+                        % else:
+                        <a class="action action-unenroll is-disabled" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}"
+                           onclick="set_unenroll_message(
+                                        '${_("Are you sure you want to unenroll from the verified {cert_name_long} track of %(course_number)s?").format(cert_name_long=cert_name_long)}',
+                                        '${_("The refund deadline for this course has passed, so you will not receive a refund.")}'
+                                    )"
+                        >
+                          ${_('Unenroll')}
+                        </a>
+                        % endif
+                      % endif
+                    </li>
+                    <li class="actions-item" id="actions-item-email-settings-${dashboard_index}">
+                      % if show_email_settings:
+                        % if not is_course_blocked:
+                          <a href="#email-settings-modal" class="action action-email-settings" rel="leanModal" data-course-id="${course_overview.id | h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}" data-optout="${unicode(course_overview.id) in course_optouts}">${_('Email Settings')}</a>
+                        % else:
+                          <a class="action action-email-settings is-disabled" data-course-id="${course_overview.id| h}" data-course-number="${course_overview.number | h}" data-dashboard-index="${dashboard_index}" data-optout="${unicode(course_overview.id) in course_optouts}">${_('Email Settings')}</a>
+                        % endif
+                      % endif
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -363,17 +361,16 @@ from student.helpers import (
 </article>
 </li>
 <script>
-           $( document ).ready(function() {
-
-               if("${is_course_blocked}" == "True"){
-                   $( "#unregister_block_course" ).click(function() {
-                       $('.disable-look-unregister').click();
-                   });
-               }
+   $(document).ready(function() {
+       if("${is_course_blocked}" == "True") {
+           $("#unregister_block_course").click(function() {
+               $('.disable-look-unregister').click();
            });
+       }
+   });
 
-           function set_unenroll_message(track_info, refund_info) {
-               document.getElementById('track-info').innerHTML = interpolate(track_info, {course_number: "<span id='unenroll_course_number'></span>"}, true);
-               document.getElementById('refund-info').innerHTML = refund_info;
-           }
+   function set_unenroll_message(track_info, refund_info) {
+       document.getElementById('track-info').innerHTML = interpolate(track_info, {course_number: "<span id='unenroll_course_number'></span>"}, true);
+       document.getElementById('refund-info').innerHTML = refund_info;
+   }
 </script>

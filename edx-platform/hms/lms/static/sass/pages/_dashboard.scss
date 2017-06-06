@@ -85,35 +85,15 @@
                 margin: 0;
               }
 
-              @media (max-width: $screen-md-min) {
-                height: 200px;
-
-                .details {
-                  padding: 10px;
-
-                  .dashboard-course-image {
-                    display: none;
-                  }
-
-                  .course-title, .course-info {
-                    margin-top: 10px;
-                    margin-left: 0;
-                  }
-
-                  .info-actions-wrapper {
-                    margin-bottom: 40px;
-                  }
-                }
-              }
-
               .course .details {
                 .dashboard-course-image {
                   float: left;
-                  padding: 0;
+
+                  @media (max-width: $screen-md-min) {
+                    display: none;
+                  }
 
                   .cover {
-                    @include size(230px, 230px);
-
                     float: left;
                     transition: none;
 
@@ -124,42 +104,51 @@
                 }
 
                 .dashboard-course-info {
-                  float: left;
-
-                  @media (max-width: 1200px) and (min-width: $screen-md-min) {
-                    padding-left: 30px;
-
-                    .course-title, .course-info {
-                      margin-left: 20px;
-                    }
-                  }
+                  overflow: auto;
 
                   @media (max-width: $screen-md-min) {
-                    max-width: 100%;
+                    height: 200px;
                   }
 
                   .wrapper-course-details {
+                    position: relative;
                     width: 100%;
 
-                    .info-date-block {
-                      width: 140px;
+                    .course-title {
+                      margin-top: 20px;
+                      margin-left: 15px;
                     }
 
-                    .wrapper-course-actions {
-                      width: auto;
+                    .info-actions-wrapper {
+                      bottom: 0;
+                      padding: 15px;
+                      width: 100%;
 
-                      .course-actions {
-                        .enter-course {
-                          -webkit-box-sizing: border-box;
-                          -moz-box-sizing: border-box;
-                          border: none;
-                          background-color: $crimson;
-                          text-align: center;
-                          font: normal 15px/1.1em "AvenirLTStd-Book", Verdana, Geneva, sans-serif, sans-serif;
+                      .course-info {
+                        margin: 0;
+
+                        .info-date-block {
+                          margin: 0;
+                          width: 80px;
                         }
+                      }
 
-                        .action {
-                          padding: 5px;
+                      .wrapper-course-actions {
+                        margin: 0;
+
+                        .course-actions {
+                          .enter-course {
+                            -webkit-box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+                            border: none;
+                            background-color: $crimson;
+                            text-align: center;
+                            font: normal 15px/1.1em "AvenirLTStd-Book", Verdana, Geneva, sans-serif, sans-serif;
+                          }
+
+                          .action {
+                            padding: 5px;
+                          }
                         }
                       }
                     }
