@@ -10,19 +10,41 @@
 
 .discussion-board {
   .page-header.has-secondary {
-    padding: 25px 15px 35px;
+    padding: 25px 15px 35px 45px;
     border: 1px solid $color-border;
     border-bottom: none;
 
+    @media (max-width: 600px) {
+      padding: 15px 25px 25px;
+      overflow: auto;
+    }
+
     .page-header-main {
-      margin-left: 20px;
+      margin-top: 7px;
       line-height: 1.7rem;
+
+      @media (max-width: 600px) {
+        float: left;
+        margin-bottom: 15px;
+      }
     }
 
     .page-header-secondary {
       float: right;
 
+      @media (max-width: 600px) {
+        float: left;
+        clear: both;
+      }
+
       .form-actions {
+        margin-right: 20px;
+
+        @media (max-width: 500px) {
+          float: left;
+          margin-bottom: 15px;
+        }
+
         button {
           transition: color 0.125s ease-in-out 0s, border-color 0.125s ease-in-out 0s, background 0.125s ease-in-out 0s, box-shadow 0.125s ease-in-out 0s;
           border-color: $color-discussion-blue;
@@ -53,7 +75,10 @@
       }
 
       .forum-search {
-        margin-left: 20px;
+        @media (max-width: 500px) {
+          float: left;
+          clear: both;
+        }
 
         input {
           -webkit-appearance: initial;
