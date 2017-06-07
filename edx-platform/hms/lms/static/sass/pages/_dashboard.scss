@@ -291,11 +291,42 @@
 }
 
 section.dashboard-banner {
-  .wrapper-msg .msg {
-    border-bottom: none;
+  .wrapper-msg {
+    &.urgency-high {
+      clear: both;
+      margin: 0 auto;
+      background: $m-teal none repeat scroll 0 0;
 
-    @media (max-width: $screen-md-min) {
-      width: 100%;
+      @media (min-width: 992px) {
+        width: 970px;
+      }
+
+      @media (min-width: 1200px) {
+        width: 1170px;
+      }
+    }
+
+    .msg {
+      border-bottom: none;
+      min-width: 0;
+
+      @media (max-width: $screen-md-min) {
+        width: 100%;
+      }
+
+      .msg-content {
+        .title {
+          font-family: $avenir-book;
+          font-size: 22px;
+        }
+
+        .copy {
+          p {
+            font-family: $avenir-book;
+            font-size: $font-size-base;
+          }
+        }
+      }
     }
   }
 }
