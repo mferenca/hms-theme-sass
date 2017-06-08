@@ -10,20 +10,21 @@
 
 > .instructor-dashboard-wrapper,
 > .instructor-dashboard-wrapper-2 {
+  padding: 30px;
   line-height: $line-height-base;
+
+  @media screen and (max-width: 1080px) {
+    padding: 10px;
+  }
 
   h2 {
     font-size: $font-size-h2;
     font-weight: $headings-font-weight;
   }
 
-  @media screen and (max-width: 1080px) {
-    padding: 10px;
-  }
-
   .instructor-dashboard-content,
   .instructor-dashboard-content-2 {
-    padding: 30px;
+    padding: 0;
 
     h1 {
       margin: 0 0 1.5em 0;
