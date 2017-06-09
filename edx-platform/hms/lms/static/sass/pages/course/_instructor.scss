@@ -41,7 +41,7 @@
     }
 
     .wrapper-msg {
-      @extend %hms-alert-warning;
+      @include hms-alert-warning;
     }
 
     ul.instructor-nav {

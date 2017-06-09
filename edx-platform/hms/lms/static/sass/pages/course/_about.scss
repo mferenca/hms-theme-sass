@@ -104,7 +104,7 @@ section.course-info {
             }
 
             > span.register.disabled {
-              @include hms-btn-disabled();
+              @include hms-btn-disabled;
               @include size(100%, auto);
             }
 
@@ -129,7 +129,7 @@ section.course-info {
               }
 
               span.register.disabled, span.add-to-cart {
-                @include hms-btn-disabled();
+                @include hms-btn($color-disabled, $white);
                 @include size(49%, auto);
 
                 margin: 0 2% 0 0;

@@ -6,7 +6,7 @@
   @include hms-modal;
 
   &.video-modal {
-    @include hms-container-modal;
+    @include hms-container;
     @include hms-video-modal;
   }
 

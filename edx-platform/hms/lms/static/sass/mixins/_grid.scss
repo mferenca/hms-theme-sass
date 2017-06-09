@@ -13,7 +13,7 @@
   padding-left: 15px;
   min-height: 1px;
 
-  @media (min-width: $screen-sm-min) {
+  @media (min-width: 768px) {
     float: left;
     width: percentage(($columns / 12));
   }
@@ -21,11 +21,11 @@
 
 @mixin make-md-column($columns) {
   position: relative;
-  min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  min-height: 1px;
 
-  @media (min-width: $screen-md-min) {
+  @media (min-width: 992px) {
     float: left;
     width: percentage(($columns / 12));
   }
@@ -33,9 +33,9 @@
 
 @mixin make-lg-column($columns) {
   position: relative;
-  min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+  min-height: 1px;
 
   @media (min-width: 1200px) {
     float: left;

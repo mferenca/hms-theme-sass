@@ -85,7 +85,7 @@
 
             .new-post-form-errors {
               li {
-                @extend %hms-alert-error;
+                @include hms-alert-error;
               }
             }
 

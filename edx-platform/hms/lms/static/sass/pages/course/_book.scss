@@ -8,7 +8,6 @@
   > .book-sidebar {
     @include size(100%, auto);
     @include make-md-column(3);
-    @include make-lg-column(3);
 
     display: block;
     float: left;
@@ -39,7 +38,6 @@
   > .book {
     @include size(100%, auto);
     @include make-md-column(9);
-    @include make-lg-column(9);
 
     display: block;
     border: 1px solid $color-border;

@@ -15,21 +15,17 @@
     padding: 0;
 
     .courses-listing-item {
-      @include make-xs-column(12);
-      @include make-sm-column(6);
-      @include make-md-column(6);
-      @include make-lg-column(4);
-
       display: block;
+      position: relative;
+      float: left;
       margin: 0;
+      padding: 0 15px;
+      min-height: 1px;
       text-align: left;
-
-      &:last-child {
-        margin: 0;
-      }
 
       .course {
         border: 1px solid $white;
+        border-radius: 0;
         box-shadow: none;
         background: none;
 

@@ -52,7 +52,6 @@
   &.disabled, &:disabled {
     cursor: $cursor-disabled;
     opacity: .65;
-    box-shadow: none;
 
     &:hover {
       background-color: $bg-color;

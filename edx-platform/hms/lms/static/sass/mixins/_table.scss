@@ -1,6 +1,0 @@
-@mixin table-rounded($radius: $default-border-radius) {
-  border-radius: $radius;
-  overflow: hidden;
-  border-collapse: separate;
-  border-spacing: 0;
-}
