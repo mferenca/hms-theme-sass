@@ -28,15 +28,35 @@ body.activation-page {
 .content-wrapper {
   background: $white;
 
-  .container {
-    margin-top: 12px;
-  }
-
   .progress.wrapper-course-material {
-    margin-bottom: 0 !important;
+    display: block;
+    border-radius: 0;
     box-shadow: none;
     background-color: $white;
-    height: 85px;
+
+    @media only screen and (max-width: 1080px) {
+      background-color: $color-nav-main;
+    }
+
+    .course-tabs li a {
+      line-height: $line-height-base;
+    }
+  }
+
+  .container {
+    margin-top: 12px;
+
+    .profile-wrapper {
+      padding: 30px;
+
+      @media only screen and (max-width: 1080px) {
+        padding: 10px;
+      }
+
+      .course-info >.chapters >section h2 {
+        font-weight: $headings-font-weight;
+      }
+    }
   }
 
   > .introduction {
