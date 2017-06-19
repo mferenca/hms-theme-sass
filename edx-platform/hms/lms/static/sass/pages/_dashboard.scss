@@ -1,18 +1,14 @@
 > section#dashboard-main {
-  @include hms-container;
-
   margin-top: 0;
+  padding: 0;
 
   .dashboard-content-wrapper {
-    margin-top: -15px;
+    border: none;
+    padding: 0;
 
     .dashboard-content {
       float: left;
-
-      .info--username .data {
-        position: relative;
-        z-index: 10;
-      }
+      padding: 0 20px 0 0;
 
       section#student-details {
         float: left;
@@ -31,6 +27,8 @@
 
           header h2 {
             margin: 0 0 30px 0;
+            color: $mortar;
+            font-size: 25px;
           }
 
           section.empty-dashboard-message {
@@ -67,7 +65,7 @@
 
             .course-item {
               transition: all .1s ease-in;
-              margin: 0 0 30px 0;
+              margin: 0 2px 30px;
               border: 1px solid $color-border;
               border-bottom: none;
               border-radius: $default-border-radius;
@@ -104,6 +102,7 @@
                 }
 
                 .dashboard-course-info {
+                  height: 230px;
                   overflow: auto;
 
                   @media (max-width: $screen-md-min) {
@@ -111,15 +110,25 @@
                   }
 
                   .wrapper-course-details {
+                    @include size(100%, 100%);
+
                     position: relative;
-                    width: 100%;
 
                     .course-title {
                       margin-top: 20px;
                       margin-left: 15px;
+
+                      a, span {
+                        text-transform: uppercase;
+                        line-height: 1.1;
+                        color: $ink;
+                        font-family: $avenir-book;
+                        font-size: 25px;
+                      }
                     }
 
                     .info-actions-wrapper {
+                      position: absolute;
                       bottom: 0;
                       padding: 15px;
                       width: 100%;
@@ -128,28 +137,29 @@
                         margin: 0;
 
                         .info-date-block {
-                          margin: 0;
                           width: 80px;
+                          color: $ink;
+                          font-size: 17px;
                         }
                       }
 
-                      .wrapper-course-actions {
-                        margin: 0;
-
-                        .course-actions {
-                          .enter-course {
-                            -webkit-box-sizing: border-box;
-                            -moz-box-sizing: border-box;
-                            border: none;
-                            background-color: $crimson;
-                            text-align: center;
-                            font: normal 15px/1.1em "AvenirLTStd-Book", Verdana, Geneva, sans-serif, sans-serif;
-                          }
-
-                          .action {
-                            padding: 5px;
-                          }
+                      .wrapper-course-actions .course-actions {
+                        .enter-course {
+                          -webkit-box-sizing: border-box;
+                          -moz-box-sizing: border-box;
+                          border: none;
+                          background-color: $crimson;
+                          padding: 12px 22px;
+                          text-align: center;
+                          text-shadow: 0 1px 0 #003954;
+                          color: $white;
+                          font: normal 15px/1.1em $avenir-book;
                         }
+
+                        .wrapper-action-more {
+                          display: none;
+                        }
+
                       }
                     }
                   }
@@ -284,7 +294,28 @@
       float: left;
 
       .announcements-dashboard-wrapper {
-        z-index: -10;
+        margin-top: 45px;
+        padding: 20px;
+
+        @media (max-width: 767px) {
+          margin-top: 0;
+        }
+
+        .announcements-title {
+          display: none;
+        }
+
+        .announcement-box {
+          margin-bottom: 15px;
+          padding: 22px 33px;
+          background-color: #f3f3f1;
+          text-align: center;
+
+          a {
+            color: $crimson;
+            font-weight: $headings-font-weight;
+          }
+        }
       }
     }
   }

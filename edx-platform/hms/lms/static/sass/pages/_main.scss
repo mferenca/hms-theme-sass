@@ -43,6 +43,20 @@ body.activation-page {
     }
   }
 
+  .dashboard .dashboard-content-wrapper {
+    margin-top: -16px;
+
+    .info--username {
+      border-bottom: 2px solid #bdb6b2;
+      color: $crimson;
+      font-size: 30px;
+
+      .data {
+        margin-left: 20px;
+      }
+    }
+  }
+
   .container {
     margin-top: 12px;
 

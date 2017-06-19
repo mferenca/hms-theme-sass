@@ -1,21 +1,9 @@
 // override lms/static/sass/views/account-settings.scss
 
-// Username Container - Account Settings
-
 .account-settings-username-container {
   @include hms-container;
 
-  .dashboard-content-wrapper {
-    margin-top: -18px;
-    width: 100% !important;
-
-    .dashboard-content {
-      .info--username .data {
-        position: relative;
-        z-index: 10;
-      }
-    }
-  }
+  padding: 0;
 }
 
 .wrapper-account-settings .wrapper-header {
