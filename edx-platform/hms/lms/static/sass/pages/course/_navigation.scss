@@ -44,6 +44,29 @@
 
         li {
           margin-right: 20px;
+
+          a {
+            border-radius: 3px;
+            padding: 10px 13px 12px;
+            text-transform: uppercase;
+            line-height: $line-height-base;
+            color: $mortar;
+            font-family: $avenir-book;
+            font-size: $font-size-base;
+
+            &:hover, &:focus {
+              border: none;
+              background-color: $gray-nav-active;
+              color: #333;
+            }
+
+            &.active {
+              border: none;
+              background-color: $gray-nav-active;
+              color: $crimson;
+              font-weight: $headings-font-weight;
+            }
+          }
         }
       }
     }
