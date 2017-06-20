@@ -6,8 +6,8 @@ body,
     @include size(auto, auto);
 
     margin: 0;
-    padding: 0 0 $layout-spacing 0;
     background: none;
+    padding: 0;
 
     @media (min-width: $screen-xs-max) {
       margin-top: -$layout-header-height - $layout-footer-height;
